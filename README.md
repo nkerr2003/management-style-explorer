@@ -72,7 +72,12 @@ The scoring method is a prototype intended more for proof of concept. It has not
 
 Work in progress
 
-Planned improvements include: Dark mode, the ability to download results as a pdf, more varied agreement-based questions and more detailed management style explanations.
+# Future Improvements
+
+- Dark mode,
+- Pdf download results
+- More varied agreement-based questions
+- More detailed management style explanations
 
 # Developer
 
