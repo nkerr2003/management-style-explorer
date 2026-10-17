@@ -418,7 +418,7 @@ function renderManagementLibrary() {
         const details = document.createElement("details");
 
         const summary = document.createElement("summary");
-        summary.textContent - "Explore this style";
+        summary.textContent = "Explore this style";
 
         details.appendChild(summary);
 
@@ -500,6 +500,8 @@ const navBrand = document.querySelector("#nav-brand");
 const navHome = document.querySelector("#nav-home");
 const navLibrary = document.querySelector("#nav-library");
 const navAbout = document.querySelector("#nav-about");
+const themeToggle = document.querySelector("#theme-toggle");
+const themeIcon = document.querySelector("#theme-icon")
 
 function showScreen(screenToShow) {
     const screens = [
@@ -551,6 +553,59 @@ function showScreen(screenToShow) {
 
     window.scrollTo(0, 0);
 }
+  
+const systemTheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+);
+
+let themePreference = localStorage.getItem("theme") || "system";
+
+function applyTheme() {
+    const isDark = themePreference === "system"
+        ? systemTheme.matches
+        : themePreference === "dark";
+
+    document.body.classList.toggle("dark-mode", isDark);
+
+    const icons = {
+        system: "◐",
+        light: "☀",
+        dark: "☾"
+    };
+
+    themeIcon.textContent = icons[themePreference];
+
+    themeToggle.setAttribute(
+        "aria-label",
+        `Current theme: ${themePreference}. Change theme`
+    );
+}
+
+//Apply the theme when the page loads
+applyTheme();
+
+//Cycle through system, light and dark modes
+themeToggle.addEventListener("click", () => {
+    const options = ["system", "light", "dark"];
+
+    const currentIndex = options.indexOf(themePreference);
+
+    themePreference = options[
+        (currentIndex + 1) % options.length
+    ];
+
+    localStorage.setItem("theme", themePreference);
+
+    applyTheme();
+});
+
+//Respond to changes in the system theme
+systemTheme.addEventListener("change", () => {
+    if (themePreference === "system") {
+        applyTheme();
+    }
+});
+
 
 function renderAgreementOptions() {
     agreementOptions.forEach((option, index) => {
