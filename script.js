@@ -994,20 +994,16 @@ function downloadResults() {
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
-
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-
     const margin = 20;
     const contentWidth = pageWidth - margin * 2;
     const bottomLimit = pageHeight - 25;
-
     const purple = [101, 88, 180];
     const dark = [37, 40, 59];
     const muted = [103, 107, 124];
     const palePurple = [238, 236, 250];
     const lightGrey = [232, 231, 241];
-
     let y = 25;
 
     function checkPage(requiredHeight = 15) {
@@ -1236,7 +1232,12 @@ function downloadResults() {
     }
 
     addHeading("Your management tendencies");
-
+    //Before the score bars would be separated between the two pages, this keeps them in agreement (on the same page)
+    const scoreSectionHeight = 125;
+    if (y + scoreSectionHeight > bottomLimit) {
+        pdf.addPage();
+        y = 25;
+    }
     addText(
         "These scores reflect your preferences across " +
         "workplace scenarios and management behaviours.",
