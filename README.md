@@ -74,10 +74,10 @@ Work in progress
 
 # Future Improvements
 
-- Dark mode,
-- Pdf download results
 - More varied agreement-based questions
 - More detailed management style explanations
+- Automated testing
+- Allow for quiz progress to be saved
 
 # Developer
 
