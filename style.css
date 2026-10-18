@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-/*Light mode colours*/
+/*Colour tokens that are shared in both light and dark themes*/
 
 :root {
     color-scheme: light;
@@ -19,7 +19,7 @@
     --progress-track: #e8e7f1;
 }
 
-/*Dark mode colours*/
+/*Tokens that are overriden by toggling to dark theme*/
 
 body.dark-mode {
     color-scheme: dark;
@@ -52,11 +52,6 @@ body {
     padding: 55px 0 30px;
 }
 
-.site-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
 #welcome h1{
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     line-height: 1.2;
@@ -74,10 +69,6 @@ h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1.15;
     margin: 12px 0;
-}
-
-.site-header > p:last-child {
-    color: #676b7c;
 }
 
 .quiz-card {
@@ -578,7 +569,7 @@ footer{
     }
 }
 
-/*Shared component colours*/
+/*Shared surfaces and buttons*/
 
 .answer-option,
 .library-card,
@@ -615,7 +606,7 @@ footer{
     border-color: var(--border);
 }
 
-/*Text colours*/
+/*Supporting text colours*/
 
 .site-header > p:last-child,
 .intro-screen > p,
@@ -665,26 +656,6 @@ footer {
     border-color: var(--border);
 }
 
-/*Theme toggle*/
-
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.theme-toggle:hover {
-    background: var(--surface-soft);
-}
 
 /*Dark mode refinements*/
 
@@ -713,6 +684,17 @@ body.dark-mode button:focus-visible {
     outline-color: #c6baff;
 }
 
+/*Navigation inside the header*/
+
+.app-header .main-nav {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
 .header-top {
     display: flex;
     justify-content: space-between;
@@ -729,17 +711,6 @@ body.dark-mode button:focus-visible {
 
 .nav-brand:hover {
     color: var(--accent);
-}
-
-/*Navigation within header*/
-
-.app-header .main-nav {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    margin: 1rem 0 0;
 }
 
 .nav-links {

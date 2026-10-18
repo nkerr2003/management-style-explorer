@@ -5,345 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Style Quiz</title>
     <link rel="stylesheet" href="style.css">
-
-    <script 
-        src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"
-        defer>
-    </script>
-
+    <!--Loads jsPDF for when it needs to be used-->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <main class="quiz-container">
-        
-<header class="app-header">
-
-    <div class="header-top">
-        <a href="#" id="nav-brand" class="nav-brand">
-            Project: Insight
-        </a>
-
-        <button
-            id="theme-toggle"
-            class="theme-toggle"
-            type="button"
-            aria-label="Change theme"
-        >
-            <span id="theme-icon" aria-hidden="true">◐</span>
-        </button>
-    </div>
-
-    <nav id="main-nav" class="main-nav" aria-label="Main navigation">
-        <div class="nav-links">
-
-            <button type="button" id="nav-home" class="nav-link active">
-                Home
-            </button>
-
-            <button type="button" id="nav-library" class="nav-link">
-                Styles Library
-            </button>
-
-            <button type="button" id="nav-about" class="nav-link">
-                About
-            </button>
-
-        </div>
-    </nav>
-
-</header>
+        <header class="app-header">
+            <div class="header-top">
+                <a href="#" id="nav-brand" class="nav-brand">Project: Insight</a>
+                <button 
+                    id="theme-toggle" class="theme-toggle" type="button" aria-label="Change theme">
+                    <span id="theme-icon" aria-hidden="true">◐</span>
+                </button>
+            </div>
+            <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+                <div class="nav-links">
+                    <button type="button" id="nav-home" class="nav-link active">Home</button>
+                    <button type="button" id="nav-library" class="nav-link">Styles Library</button>
+                    <button type="button" id="nav-about" class="nav-link">About</button>
+                </div>
+            </nav>
+        </header>
 
 
-        <!--Welcome screen-->
+        <!--Landing page-->
         <section id="welcome" class="quiz-card intro-screen">
             <p class="eyebrow"> MANAGEMENT SELF-ASSESSMENT</p>
-
             <h1>Discover your management style</h1>
-
-            <p>
-                Explore your approach to decision-making through an interactive self-assessment.
-            </p>
-
-            <p>
-                Answer 30 questions across two sections to discover your management style and receive personalised development guidance.
-            </p>
-
-            <button id="start-button" class="primary-button">
-                Start Assessment
-            </button>
+            <p>Explore your approach to decision-making through an interactive self-assessment.</p>
+            <p>Answer 30 questions across two sections to discover your management style and receive personalised development guidance.</p>
+            <button id="start-button" class="primary-button">Start Assessment</button>
         </section>
-
-        <!--Section A Description-->
+        <!--Section A (scenario-based) Description-->
         <section id="section-a-intro" class="quiz-card intro-screen" hidden>
             <p class="eyebrow">SECTION A - 12 QUESTIONS</p>
-
             <h2>Real-world scenarios</h2>
-
-            <p>
-                In this section, you will be given realistic workplace situations and decide how you would respond as a manager.
-            </p>
-
+            <p>In this section, you will be given realistic workplace situations and decide how you would respond as a manager.</p>
             <div class="instructions">
                 <h3>How it works</h3>
-                <p>
-                    Each scenario will have six possible responses. Select the one that best represents what you would do.
-                </p>
-                <p>
-                    There are no correct answers. Choose based on your genuine preferences.
-                </p>
+                <p>Each scenario will have six possible responses. Select the one that best represents what you would do.</p>
+                <p>There are no correct answers. Choose based on your genuine preferences.</p>
             </div>
-
-            <button id="begin-section-a" class="primary-button">
-                Begin Section A
-            </button>
+            <button id="begin-section-a" class="primary-button">Begin Section A</button>
         </section>
 
-        <!--Section B Description-->
+        <!--Section B (agreement-scale) Description-->
         <section id="section-b-intro" class="quiz-card intro-screen" hidden>
             <p class="eyebrow">SECTION B - 18 QUESTIONS</p>
-
             <h2>Management behaviours</h2>
-
-            <p>
-                In this section, you will be presented statements about different management approaches.
-            </p>
-
+            <p>In this section, you will be presented statements about different management approaches.</p>
             <div class="instructions">
                 <h3>How it works</h3>
-                <p>
-                    Rate how strongly you agree with each statement.
-                </p>
-
-                <p>
-                    1 - Strongly disagree
-                </p>
-                <p>
-                    2 - Disagree
-                </p>
-                <p>
-                    3 - Neither agree nor disagree
-                </p>
-                <p>
-                    4 - Agree
-                </p>
-                <p>
-                    5 - Strongly agree
-                </p>
+                <p>Rate how strongly you agree with each statement.</p>
+                <p>1 - Strongly disagree</p>
+                <p>2 - Disagree</p>
+                <p>3 - Neither agree nor disagree</p>
+                <p>4 - Agree</p>
+                <p>5 - Strongly agree</p>
             </div>
-
-            <button id="begin-section-b" class="primary-button">
-                Begin Section B
-            </button>
-
-            <button id="back-to-section-a" class="secondary-button">
-                Back to Section A
-            </button>
+            <button id="begin-section-b" class="primary-button">Begin Section B</button>
+            <button id="back-to-section-a" class="secondary-button">Back to Section A</button>
         </section>
-
-        <!--Quiz interface-->
+        <!--Quiz interface (is reused by both sections)-->
         <section id="quiz" class="quiz-card" hidden>
             <div class="progress-info">
                 <span id="question-count">Question 1 of 30</span>
                 <span id="progress-percent">3%</span>
             </div>
-            
             <div class="progress-track">
                 <div id="progress-bar"></div>
             </div>
-
             <h2 id="question-text"></h2>
             <div id="answer-options" class="answer-options"></div>
-
             <p id="error-message" class="error-message" role="status"></p>
             <div class="quiz-controls">
-                <button id="back-button" class="secondary-button">
-                    Back
-                </button>
-                <button id="next-button" class="primary-button">
-                    Next
-                </button>
+                <button id="back-button" class="secondary-button">Back</button>
+                <button id="next-button" class="primary-button">Next</button>
             </div>
         </section>
 
         <!--Management styles library-->
         <section id="management-library" class="quiz-card" hidden>
-
             <div class="library-header">
                 <p class="eyebrow">MANAGEMENT STYLES LIBRARY</p>
                 <h2>Explore management styles</h2>
-
-                <p>
-                    Learn about six different approaches to management, including their strengths, challenges and ways to develop their leadership skills.
-                </p>
+                <p>Learn about six different approaches to management, including their strengths, challenges and ways to develop their leadership skills.</p>
             </div>
-
             <div id="library-grid" class="library-grid"></div>
-
-            <button id="library-back-button" class="secondary-button">
-                Back
-            </button>
-
-            <button id="library-about-button" class="secondary-button about-nav-button">
-                About the project
-            </button>
+            <button id="library-back-button" class="secondary-button">Back</button>
+            <button id="library-about-button" class="secondary-button about-nav-button">About the project</button>
         </section>
 
         <!--About page-->
         <section id="about" class="quiz-card" hidden>
-
             <div class="about-header">
                 <p class="eyebrow">ABOUT THE PROJECT</p>
                 <h2>About Project: Insight</h2>
-                <p>
-                    Discover your leadership preferences, explore different management approaches and identify opportunities for personal and professional growth.
-                </p>
+                <p>Discover your leadership preferences, explore different management approaches and identify opportunities for personal and professional growth.</p>
             </div>
-
             <div class="about-section">
                 <h3>What is Project: Insight?</h3>
-                <p>
-                    Project: Insight is an interactive self-assessment designed to help users reflect on how they approach leadership.
-                </p>
-
-                <p>
-                    The assessment explores six management styles: Autocratic, Democratic, Laissez-faire, Transformational, Transactional and Coaching.
-                </p>
+                <p>Project: Insight is an interactive self-assessment designed to help users reflect on how they approach leadership.</p>
+                <p>The assessment explores six management styles: Autocratic, Democratic, Laissez-faire, Transformational, Transactional and Coaching.</p>
             </div>
-
             <div class="about-section">
                 <h3>How does the assessment work?</h3>
-                <p>
-                    The assessment contains 30 questions divided into two sections.
-                </p>
-
+                <p>The assessment contains 30 questions divided into two sections.</p>
                 <h4>Section A - Scenario-based Questions</h4>
-                <p>
-                    You will be presented 12 real-world scenarios. Select the response that best represents how you would handle each situation.
-                </p>
-
+                <p>You will be presented 12 real-world scenarios. Select the response that best represents how you would handle each situation.</p>
                 <h4>Section B - Management Behaviour Questions</h4>
-                <p>
-                    You will be presented with 18 statements about general management behaviours. Rate your level of agreement using a five-point scale.
-                </p>
-
-                <p>
-                    Questions and answer options are randomised where appropriate to reduce predictable patterns.
-                </p>
+                <p>You will be presented with 18 statements about general management behaviours. Rate your level of agreement using a five-point scale.</p>
+                <p>Questions and answer options are randomised where appropriate to reduce predictable patterns.</p>
             </div>
-
             <div class="about-section">
                 <h3>Understanding your results</h3>
-                <p>
-                    Your responses in both sections contribute to a combined primary management profile.
-                </p>
-
-                <p>
-                    Currently, both the scenario-based questions and management behaviour questions are equally weighted. This means that each section contributes 50% to each style's combined score. Though this is subject to change dependant on future research.
-                </p>
-
-                <p>
-                    Your results include your leading management profile as well as closely matched styles (within 10%). It also displays potential strengths, challenges and personalised developmental advice.
-                </p>
-
-                <p>
-                    You can also download your results for future reference.
-                </p>
+                <p>Your responses in both sections contribute to a combined primary management profile.</p>
+                <p>Currently, both the scenario-based questions and management behaviour questions are equally weighted. This means that each section contributes 50% to each style's combined score. Though this is subject to change dependant on future research.</p>
+                <p>Your results include your leading management profile as well as closely matched styles (within 10%). It also displays potential strengths, challenges and personalised developmental advice.</p>
+                <p>You can also download your results for future reference.</p>
             </div>
-
             <div class="about-section">
                 <h3>Management Styles Library</h3>
-                <p> 
-                    The Management Styles Library is where you can find information about all six management approaches, including their strengths, potential challenges and development tips.
-                </p>
-
-                <p>
-                    You can explore the library independently of the assessment.
-                </p>
+                <p>The Management Styles Library is where you can find information about all six management approaches, including their strengths, potential challenges and development tips.</p>
+                <p>You can explore the library independently of the assessment.</p>
             </div>
-
             <div class="about-section">
                 <h3>About the developer</h3>
-                <p>
-                    Project: Insight is a web development project created using HTML, CSS and JavaScript by Niara Kerr.
-                </p>
-
-                <p>
-                    The project explores interactive questionnaire design, JavaScript-based scoring, dynamic interfaces and personalised feedback.
-                </p>
+                <p>Project: Insight is a web development project created using HTML, CSS and JavaScript by Niara Kerr.</p>
+                <p>The project explores interactive questionnaire design, JavaScript-based scoring, dynamic interfaces and personalised feedback.</p>
             </div>
-
             <div class="about-disclaimer">
                 <h3>Important information</h3>
-                <p>
-                    This assessment is intended for personal reflection. It is not a scientifically validated psychological assessment or a formal measure of leadership ability.
-                </p>
-
-                <p>
-                    Management preferences may vary depending on the situation, level of experience and working environment. 
-                </p>
+                <p>This assessment is intended for personal reflection. It is not a scientifically validated psychological assessment or a formal measure of leadership ability.</p>
+                <p>Management preferences may vary depending on the situation, level of experience and working environment. </p>
             </div>
-
-            <button id="about-back-button" class="secondary-button">
-                Back
-            </button>
+            <button id="about-back-button" class="secondary-button">Back</button>
         </section>
-
-        <!--Results screen-->
+        <!--Results screen and PDF download-->
         <section id="results" class="quiz-card" hidden>
             <div class="profile-header">
                 <p class="eyebrow">YOUR MANAGEMENT PROFILE</p>
-
                 <h2 id="result-title"></h2>
-
                 <p id="combined-top-score" class="profile-score"></p>
-
                 <p id="result-description"></p>
-
                 <div id="secondary-tendency" class="secondary-tendency" hidden>
                     <h3>Closely matched management tendencies</h3>
                     <p id="secondary-tendency-text"></p>
                 </div>
             </div>
-
             <div class="score-breakdown">
                 <h3>Your management tendencies</h3>
-
-                <p>
-                    Your scores reflect both your workplace decisions and agreement with management behaviours.
-                </p>
-
+                <p>Your scores reflect both your workplace decisions and agreement with management behaviours.</p>
                 <div id="combined-bars"></div>
-
-                <p class="score-explanation">
-                    Each score combines scenario preferences and agreement ratings. Scores represent a comparison of management tendencies, not a validated measure of leadership ability. The six percentages do not necessarily add up to 100%.
-                </p>
+                <p class="score-explanation">Each score combines scenario preferences and agreement ratings. Scores represent a comparison of management tendencies, not a validated measure of leadership ability. The six percentages do not necessarily add up to 100%.</p>
             </div>
-
             <div class="result-details">
                 <h3>Your strengths</h3>
                 <ul id="result-strengths"></ul>
-
                 <h3>Potential challenges</h3>
                 <ul id="result-challenges">
                 </ul>
-
                 <h3>Personalised development tips</h3>
                 <ul id="result-tips"></ul>
             </div>
-
-            <button id="download-button" class="secondary-button">
-                <span aria-hidden="true"></span>Download my results
-            </button>
-
-            <button id="restart-button" class="primary-button">
-                Retake quiz
-            </button>
-
-             <button id="results-library-button" class="secondary-button library-nav-button">
-                Explore All Management Styles
-            </button>
+            <button id="download-button" class="secondary-button">Download my results</button>
+            <button id="restart-button" class="primary-button">Retake quiz</button>
+            <button id="results-library-button" class="secondary-button library-nav-button">Explore All Management Styles</button>
         </section>
-
         <footer>
             <p>A tool for personal reflection and growth. WIP - Niara Kerr</p>
         </footer>

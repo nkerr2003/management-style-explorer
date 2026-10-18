@@ -1,3 +1,11 @@
+/* Project: Insight - quiz logic
+*
+* Questions, page navigation, scoring, theme preferences and the PDF report download
+* The assessment is currently only suitable for personal reflection, it is not suitable for a scientific measure of leadership ability.
+* Future research may be conducted to make this a more in-depth assessment
+*/
+
+//Section A: 12 Scenario-based questions
 const questions = [
     {
         type: "scenario",
@@ -61,7 +69,7 @@ const questions = [
     },
     {    
         type: "scenario",
-        text: "A new employee joins your team. What would you prioritise?",
+        text: "A new team member joins your team. What would you prioritise?",
         options: [
             { text: "Explain the rules, responsibilities and required procedures.", style: "autocratic"},
             { text: "Help them get to know the team and its shared ways of working.", style: "democratic"},
@@ -75,12 +83,12 @@ const questions = [
         type: "scenario",
         text: "Two team members disagree about how to approach a project, how would you handle the conflict?",
         options: [
-            { text: "Make a final decision and instruct both employees to follow it", style: "autocratic"},
-            { text: "Bring both employees together to discuss and agree on a solution", style: "democratic"},
-            { text: "Give the employees space to resolve the disagreement themselves", style: "laissezFaire"},
-            { text: "Encourage both employees to focus on their shared goals and wider purpose", style: "transformational"},
+            { text: "Make a final decision and instruct both team members to follow it", style: "autocratic"},
+            { text: "Bring both team members together to discuss and agree on a solution", style: "democratic"},
+            { text: "Give the team members space to resolve the disagreement themselves", style: "laissezFaire"},
+            { text: "Encourage both team members to focus on their shared goals and wider purpose", style: "transformational"},
             { text: "Refer to established procedures and project requirements to resolve the conflict", style: "transactional"},
-            { text: "Guide the employees through a constructive conversation to develop their conflict-resolution skills", style: "coaching"}
+            { text: "Guide the team members through a constructive conversation to develop their conflict-resolution skills", style: "coaching"}
         ]
     },
     {
@@ -112,7 +120,7 @@ const questions = [
         text: "A team member's performance has declined over the past month. How would you respond?",
         options: [
             { text: "Clearly explain the required improvements and direct them on how to improve", style: "autocratic"},
-            { text: "Discuss the situation openly and involve the employee on deciding what should change", style: "democratic"},
+            { text: "Discuss the situation openly and involve the team member on deciding what should change", style: "democratic"},
             { text: "Give the team member time and independence to improve their performance", style: "laissezFaire"},
             { text: "Help the team member reconnect with the purpose and importance of their work", style: "transformational"},
             { text: "Review performance against established targets and agree on measurable improvements", style: "transactional"},
@@ -145,95 +153,96 @@ const questions = [
     }
 ];
 
+// Section B: 18 agreement-based statements
 const agreementQuestions = [
     {
         type: "agreement",
-        text: "I prefer making important decisions independently.",
+        text: "I believe important decisions should ultimately be made by the manager rather than the whole team.",
         style: "autocratic"
     },
     {
         type: "agreement",
-        text: "I give clear instructions when directing my team.",
+        text: "I believe team members should follow managerial instructions even when they would approach a task differently.",
         style: "autocratic"
     },
     {
         type: "agreement",
-        text: "I involve team members in important decisions.",
+        text: "I feel comfortable taking responsibility for unpopular decisions when I believe they are necessary for the team.",
+        style: "autocratic"
+    },
+    {
+        type: "agreement",
+        text: "I prefer to reach decisions through team consensus.",
         style: "democratic"
     },
     {
         type: "agreement",
-        text: "I encourage open discussions before making decisions.",
+        text: "I encourage team members to openly challenge my ideas.",
         style: "democratic"
     },
     {
         type: "agreement",
-        text: "I give experienced team members freedom to choose how they work.",
+        text: "I prefer to establish team objectives through collaborative discussion.",
+        style: "democratic"
+    },
+    {
+        type: "agreement",
+        text: "I prefer to act as a resource for my team rather than direct their everyday activities.",
         style: "laissezFaire"
     },
     {
         type: "agreement",
-        text: "I prefer allowing team members to solve problems independently.",
+        text: "I believe managers should intervene only when team members request additional support.",
+        style: "laissezFaire"
+    },
+    {
+        type: "agreement",
+        text: "I believe team members work best when they have the freedom to make decisions about their own responsibilities.",
         style: "laissezFaire"
     },
     {
         type: "agreement", 
-        text: "I motivate my team by communicating a shared vision.",
+        text: "I prefer to motivate my team by connecting their everyday responsibilities to a larger purpose.",
         style: "transformational"
     },
     {
         type: "agreement",
-        text: "I encourage my team to embrace change and new ideas.",
+        text: "I encourage my team to experiment with new ideas, even when the outcome is uncertain.",
+        style: "transformational"
+    },
+    {
+        type: "agreement",
+        text: "I prefer to set long-term goals that inspire my team to achieve more than they initially thought possible.",
         style: "transformational"
     },
     {
         type: "agreement", 
-        text: "I prefer setting clear performance targets for my team.",
+        text: "I prefer to establish clear targets so team members know what is expected of them.",
         style: "transactional"
     },
     {
         type: "agreement",
-        text: "I use measurable objectives to evaluate progress.",
+        text: "I prefer to evaluate team members using measurable results rather than subjective impressions.",
         style: "transactional"
     },
     {
         type: "agreement",
-        text: "I prioritise helping team members develop their skills.",
+        text: "I believe team membets should receive recognition or rewards when they achieve agreed performance objectives.",
+        style: "transactional"
+    },
+    {
+        type: "agreement",
+        text: "I prefer to guide team members towards finding their own solutions instead of providing the answers.",
         style: "coaching"
     },
     {
         type: "agreement",
-        text: "I regularly provide constructive feedback to support growth.",
+        text: "I regularly discuss individual development goals with team members to support their growth.",
         style: "coaching"
     },
     {
         type: "agreement",
-        text: "I feel comfortable taking responsibility for difficult decisions without consulting others.",
-        style: "autocratic"
-    },
-    {
-        type: "agreement",
-        text: "I believe team members should have a meaningful say in decisions",
-        style: "democratic"
-    },
-    {
-        type: "agreement",
-        text: "I trust capable team members to manage their responsibilities without frequent supervision",
-        style: "laissezFaire"
-    },
-    {
-        type: "agreement",
-        text: "I actively encourage my team to challenge existing ways of doing things",
-        style: "transformational"
-    },
-    {
-        type: "agreement",
-        text: "I believe regular performance reviews against agreed objectives are essential for managing a team",
-        style: "transactional"
-    },
-    {
-        type: "agreement",
-        text: "I help employees reflect on their experiences so they can identify opportunities to improve",
+        text: "I believe regular one-to-one development conversations are an important part of being a manager.",
         style: "coaching"
     }
 ];
@@ -246,6 +255,7 @@ const agreementOptions = [
     "Strongly Agree"
 ];
 
+//A Fisher-Yates shuffle that copies the original so restarting doesn't change question data 
 function shuffleQuestions(questionArray) {
     const shuffled = [...questionArray];
 
@@ -273,13 +283,11 @@ let quizQuestions = [
 ];
 
 let aboutPreviousScreen = null;
-
 const scenarioWeight = 0.5;
 const agreementWeight = 1 - scenarioWeight;
-
 const closeScoreThreshold = 10;
 
-
+//Descriptions of management styles used by the results screen and library
 const styleInfo = {
     autocratic: {
         name: "Autocratic",
@@ -402,6 +410,7 @@ const styleInfo = {
     }
 };
 
+//Builds the library cards in the same style as the results
 function renderManagementLibrary() {
     libraryGrid.replaceChildren();
 
@@ -467,6 +476,7 @@ let answers = Array(quizQuestions.length).fill(null);
 let latestScores = null;
 let libraryPreviousScreen = null;
 
+//Caches the page elements used during the quiz
 const quiz = document.querySelector("#quiz");
 const results = document.querySelector("#results");
 const welcome = document.querySelector("#welcome");
@@ -503,6 +513,7 @@ const navAbout = document.querySelector("#nav-about");
 const themeToggle = document.querySelector("#theme-toggle");
 const themeIcon = document.querySelector("#theme-icon")
 
+//Keeps the visible screen and the main nav synced
 function showScreen(screenToShow) {
     const screens = [
         welcome,
@@ -518,7 +529,7 @@ function showScreen(screenToShow) {
         screen.hidden = screen !== screenToShow;
     });
 
-    //Hide nav bar during assessment
+    //Hide nav bar during quiz
     const assessmentScreens = [
         sectionAIntro,
         sectionBIntro,
@@ -527,7 +538,7 @@ function showScreen(screenToShow) {
 
     mainNav.hidden = assessmentScreens.includes(screenToShow);
 
-    //Update active nav button
+    //Highlights active nav button
     navHome.classList.toggle(
         "active",
         screenToShow === welcome
@@ -543,7 +554,6 @@ function showScreen(screenToShow) {
         screenToShow === about
     );
 
-    //Update accessibility state
     [navHome, navLibrary, navAbout].forEach((button) => {
         button.setAttribute(
             "aria-pressed",
@@ -553,7 +563,8 @@ function showScreen(screenToShow) {
 
     window.scrollTo(0, 0);
 }
-  
+ 
+//Uses either the saved choice or device colour scheme for light/dark mode
 const systemTheme = window.matchMedia(
     "(prefers-color-scheme: dark)"
 );
@@ -606,7 +617,7 @@ systemTheme.addEventListener("change", () => {
     }
 });
 
-
+//Function for storing agreement-based answers (stored as ratings from 1-5)
 function renderAgreementOptions() {
     agreementOptions.forEach((option, index) => {
         const button = document.createElement("button");
@@ -635,6 +646,7 @@ function renderAgreementOptions() {
     });
 }
 
+//Function for storing scenario-based answers (stored at the index of the response)
 function renderScenarioOptions(question) {
     question.options.forEach((option, index) => {
         const button = document.createElement("button");
@@ -661,6 +673,7 @@ function renderScenarioOptions(question) {
     });
 }
 
+//Function to display the quiz questions
 function renderQuestion() {
     const question = quizQuestions[currentQuestion];
 
@@ -693,87 +706,8 @@ function renderQuestion() {
         : "Next";
 }
 
-//Was used to show the scenario results separately from the combined results
-//function displayScoreBreakdown(rankedStyles) {
-    //const scoreBars = document.querySelector("#score-bars");
-
-    //scoreBars.replaceChildren();
-
-    //rankedStyles.forEach(([style, score]) => {
-       // const percentage = (score / questions.length) * 100;
-
-        //const scoreItem = document.createElement("div");
-       // scoreItem.className = "score-item";
-
-       // const scoreLabel = document.createElement("div");
-       // scoreLabel.className = "score-label";
-
-        //const styleName = document.createElement("span");
-        //styleName.textContent = styleInfo[style].name;
-
-       // const scoreValue = document.createElement("span");
-        //scoreValue.textContent = `${Math.round(percentage)}%`;
-
-        //scoreLabel.appendChild(styleName);
-        //scoreLabel.appendChild(scoreValue);
-
-        //const scoreTrack = document.createElement("div");
-        //scoreTrack.className = "score-track";
-
-       // const scoreFill = document.createElement("div");
-        //scoreFill.className = "score-fill";
-        //scoreFill.style.width = `${percentage}%`;
-
-        //scoreTrack.appendChild(scoreFill);
-
-        //scoreItem.appendChild(scoreLabel);
-        //scoreItem.appendChild(scoreTrack);
-
-        //scoreBars.appendChild(scoreItem);
-    //});
-//}
-
-function displayAgreementBreakdown(agreementPercentages) {
-    const agreementBars = document.querySelector("#agreement-bars");
-
-    agreementBars.replaceChildren();
-
-    const rankedAgreement = Object.entries(
-        agreementPercentages
-    ).sort((a, b) => b[1] - a[1]);
-
-    rankedAgreement.forEach(([style, percentage]) => {
-        const scoreItem = document.createElement("div");
-        scoreItem.className = "score-item";
-
-        const scoreLabel = document.createElement("div");
-        scoreLabel.className = "score-label";
-
-        const styleName = document.createElement("span");
-        styleName.textContent = styleInfo[style].name;
-
-        const scoreValue = document.createElement("span");
-        scoreValue.textContent = `${Math.round(percentage)}%`;
-
-        scoreLabel.appendChild(styleName);
-        scoreLabel.appendChild(scoreValue);
-
-        const scoreTrack = document.createElement("div");
-        scoreTrack.className = "score-track";
-
-        const scoreFill = document.createElement("div");
-        scoreFill.className = "score-fill";
-        scoreFill.style.width = `${percentage}%`;
-
-        scoreTrack.appendChild(scoreFill);
-
-        scoreItem.appendChild(scoreLabel);
-        scoreItem.appendChild(scoreTrack);
-
-        agreementBars.appendChild(scoreItem);
-    });
-}
-
+//Function to display results (shows combined scores in descending order)
+//Results used to be shown separately
 function displayCombinedBreakdown(rankedCombinedStyles) {
     const combinedBars = document.querySelector("#combined-bars");
 
@@ -811,6 +745,9 @@ function displayCombinedBreakdown(rankedCombinedStyles) {
     });
 }
 
+//Scenario-based score = score of responses/12
+//Agreement-based percentage maps 1-5 to 0-100
+//Each section is 50% of the combined overall score
 function calculateResult() {
     const scores = {
         autocratic: 0,
@@ -830,7 +767,7 @@ function calculateResult() {
         coaching: []
     };
 
-    //Add one point to the style selected for each question.
+    //Add one point to the style selected for each scenario-based question.
     answers.forEach((answer, questionIndex) => {
         const question = quizQuestions[questionIndex];
 
@@ -910,7 +847,8 @@ function calculateResult() {
     const resultTips = document.querySelector("#result-tips");
     const combinedTopScore = document.querySelector("#combined-top-score")
     combinedTopScore.textContent = `${Math.round(highestCombinedScore)}% profile score`;
-    
+
+        //Determines what results to show based on the scores
         if (tiedCombinedStyles.length > 1) {
             resultTitle.textContent = "A blend of management styles";
 
@@ -983,14 +921,14 @@ function calculateResult() {
                 results.hidden = false;
         }
 
-       
+//Uses jsPDF to export the results and generate a pdf file to be downloaded     
 function downloadResults() {
     if (!latestScores) return;
 
     if (!window.jspdf) {
         alert("The PDF library could not load.");
         return;
-    }
+    } //The pdf is given a specific colour palette for consistency
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
@@ -1006,6 +944,7 @@ function downloadResults() {
     const lightGrey = [232, 231, 241];
     let y = 25;
 
+    //Keeps text and charts separate from the footer
     function checkPage(requiredHeight = 15) {
         if (y + requiredHeight > bottomLimit) {
             pdf.addPage();
@@ -1058,6 +997,7 @@ function downloadResults() {
         });
     }
     
+    //Draws a labelled bar for the management styles
     function addScoreBar(name, percentage) {
         checkPage(19);
 
@@ -1102,6 +1042,7 @@ function downloadResults() {
         y += 13;
     }
 
+    //Adds page numbers once the final page count is known
     function addPageDetails() {
         const totalPages = pdf.internal.getNumberOfPages();
 
@@ -1232,7 +1173,8 @@ function downloadResults() {
     }
 
     addHeading("Your management tendencies");
-    //Before the score bars would be separated between the two pages, this keeps them in agreement (on the same page)
+    //Reserves space for the heading, introduction and bars in agreement (on the same page)
+    //(Before, there was an issue where the bars were being separated from each other (so sad!))
     const scoreSectionHeight = 125;
     if (y + scoreSectionHeight > bottomLimit) {
         pdf.addPage();
@@ -1276,119 +1218,117 @@ function downloadResults() {
     pdf.save("project-insight-management-profile.pdf");
 }
 
-
-        nextButton.addEventListener("click", () => {
-            if (answers[currentQuestion] === null) {
-                errorMessage.textContent =
-                "Please select an answer to continue.";
+//Quiz controls and navigation
+nextButton.addEventListener("click", () => {
+    if (answers[currentQuestion] === null) {
+        errorMessage.textContent = "Please select an answer to continue.";
                 return;
-            }
+    }
 
-            if (currentQuestion < quizQuestions.length - 1) {
-                currentQuestion++;
+    if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
 
-                if (currentQuestion === questions.length) {
-                    showScreen(sectionBIntro);
-                } else {
-                    renderQuestion();
-                }
-
-            } else {
-                calculateResult();
-            }
-        });
-
-        backButton.addEventListener("click", () => {
-            if (currentQuestion === questions.length) {
-                showScreen(sectionBIntro);
-
-            } else if (currentQuestion > 0) {
-                currentQuestion--;
-                renderQuestion();
-            }
-        });
-
-        restartButton.addEventListener("click", () => {
-            currentQuestion = 0;
-
-            quizQuestions = [
-                ...shuffleScenarioOptions(questions),
-                ...shuffleQuestions(agreementQuestions)
-            ];
-
-            answers = Array(quizQuestions.length).fill(null);
-            latestScores = null;
-
-            results.hidden = true;
-            quiz.hidden = false;
-            
+        if (currentQuestion === questions.length) {
+            showScreen(sectionBIntro);
+        } else {
             renderQuestion();
-            showScreen(welcome);
-        });
+        }
 
-        startButton.addEventListener("click", () => {
-            showScreen(sectionAIntro);
-        });
+    } else {
+        calculateResult();
+    }
+});
 
-        beginSectionA.addEventListener("click", () => {
-            currentQuestion = 0;
-            renderQuestion();
-            showScreen(quiz);
-        });
+backButton.addEventListener("click", () => {
+    if (currentQuestion === questions.length) {
+        showScreen(sectionBIntro);
 
-        beginSectionB.addEventListener("click", () => {
-            renderQuestion();
-            showScreen(quiz);
-        });
-
-        backToSectionA.addEventListener("click", () => {
-            currentQuestion = questions.length - 1;
-            renderQuestion();
-            showScreen(quiz);
-        });
-
-
-        resultsLibraryButton.addEventListener("click", () => {
-            openManagementLibrary(results);
-        });
-
-        libraryBackButton.addEventListener("click", () => {
-            showScreen(libraryPreviousScreen || welcome);
-        });
-
-        libraryAboutButton.addEventListener("click", () => {
-            openAboutPage(managementLibrary);
-        });
-
-        aboutBackButton.addEventListener("click", () => {
-            showScreen(aboutPreviousScreen || welcome);
-        });
-
-        navHome.addEventListener("click", () => {
-            showScreen(welcome);
-        });
-
-        navBrand.addEventListener("click", (event) => {
-            event.preventDefault();
-            showScreen(welcome);
-        });
-
-        navLibrary.addEventListener("click", () => {
-            const currentScreen = results.hidden
-                ? (about.hidden ? welcome:about)
-                : results;
-
-            openManagementLibrary(currentScreen);
-        });
-
-        navAbout.addEventListener("click", () => {
-            const currentScreen = results.hidden
-            ? (managementLibrary.hidden ? welcome : managementLibrary)
-            : results;
-
-            openAboutPage(currentScreen);
-        });
-
-        downloadButton.addEventListener("click", downloadResults);
-
+    } else if (currentQuestion > 0) {
+        currentQuestion--;
         renderQuestion();
+    }
+});
+
+restartButton.addEventListener("click", () => {
+    currentQuestion = 0;
+
+    quizQuestions = [
+        ...shuffleScenarioOptions(questions),
+        ...shuffleQuestions(agreementQuestions)
+    ];
+
+    answers = Array(quizQuestions.length).fill(null);
+    latestScores = null;
+
+    results.hidden = true;
+    quiz.hidden = false;
+            
+    renderQuestion();
+    showScreen(welcome);
+});
+
+startButton.addEventListener("click", () => {
+    showScreen(sectionAIntro);
+});
+
+beginSectionA.addEventListener("click", () => {
+    currentQuestion = 0;
+    renderQuestion();
+    showScreen(quiz);
+});
+
+beginSectionB.addEventListener("click", () => {
+    renderQuestion();
+    showScreen(quiz);
+});
+
+backToSectionA.addEventListener("click", () => {
+    currentQuestion = questions.length - 1;
+    renderQuestion();
+    showScreen(quiz);
+});
+
+resultsLibraryButton.addEventListener("click", () => {
+    openManagementLibrary(results);
+});
+
+libraryBackButton.addEventListener("click", () => {
+    showScreen(libraryPreviousScreen || welcome);
+});
+
+libraryAboutButton.addEventListener("click", () => {
+    openAboutPage(managementLibrary);
+});
+
+aboutBackButton.addEventListener("click", () => {
+    showScreen(aboutPreviousScreen || welcome);
+});
+
+navHome.addEventListener("click", () => {
+    showScreen(welcome);
+});
+
+navBrand.addEventListener("click", (event) => {
+    event.preventDefault();
+    showScreen(welcome);
+});
+
+navLibrary.addEventListener("click", () => {
+    const currentScreen = results.hidden
+        ? (about.hidden ? welcome:about)
+        : results;
+
+    openManagementLibrary(currentScreen);
+});
+
+navAbout.addEventListener("click", () => {
+    const currentScreen = results.hidden
+        ? (managementLibrary.hidden ? welcome : managementLibrary)
+        : results;
+
+    openAboutPage(currentScreen);
+});
+
+downloadButton.addEventListener("click", downloadResults);
+
+renderQuestion();
