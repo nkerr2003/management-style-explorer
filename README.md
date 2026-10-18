@@ -74,7 +74,6 @@ Work in progress
 
 # Future Improvements
 
-- More varied agreement-based questions
 - More detailed management style explanations
 - Automated testing
 - Allow for quiz progress to be saved
