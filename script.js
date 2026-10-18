@@ -227,7 +227,7 @@ const agreementQuestions = [
     },
     {
         type: "agreement",
-        text: "I believe team membets should receive recognition or rewards when they achieve agreed performance objectives.",
+        text: "I believe team members should receive recognition or rewards when they achieve agreed performance objectives.",
         style: "transactional"
     },
     {
